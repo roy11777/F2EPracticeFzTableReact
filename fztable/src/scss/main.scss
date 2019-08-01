@@ -30,8 +30,11 @@ body {
 .wrapper {
   width: $screen-lg-desktop-wrapper;
   margin: 0 auto;
-  @media screen and (max-width: $screen-desktop-max) {
+  @media screen and (min-width: $screen-tablet) and (max-width: $screen-desktop-max) {
     width: $screen-desktop-wrapper;
+  }
+  @media screen and (max-width: $screen-phone-max) {
+    // width: 300px;
   }
 }
 .cheapest {
