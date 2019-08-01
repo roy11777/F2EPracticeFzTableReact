@@ -41,7 +41,7 @@ class Mainpage extends React.Component {
     console.log(e.target)
     this.setState({ contentHoverStatus: true })
   }
-  tableContentMouseLeave = (e) => {
+  tableContentMouseLeave = e => {
     console.log(e.target)
     this.setState({ contentHoverStatus: false })
   }
@@ -57,37 +57,48 @@ class Mainpage extends React.Component {
                   <span>回程</span>
                   <span>去程</span>
                 </td>
-                {this.state.Info.map((ele, index) => (
-                  <td className="dateIntervalTop" key={index + +new Date()}>
-                    {ele.goDate}
-                  </td>
-                ))}
+                <td>
+                  <div>
+                    {this.state.Info.map((ele, index) => (
+                      <div
+                        className="dateIntervalTop"
+                        key={index + +new Date()}
+                      >
+                        {ele.goDate}
+                      </div>
+                    ))}
+                  </div>
+                </td>
               </tr>
               {this.state.Info.map((ele, index) => (
                 <tr key={index + +new Date()}>
                   {/* 一定要用TD包ele不可單純用寫在這裡 */}
                   <td className="dateIntervalLeft">{ele.goDate}</td>
-                  {ele.detail.map((e, index) => (
-                    <td
-                      className={
-                        (e.cheapest === true ? 'cheapest' : '') +
-                        ' tableContent' +
-                        (this.state.contentHoverStatus ? ' active' : ' ')
-                      }
-                      key={index + +new Date()}
-                      onMouseEnter={this.tableContentMouseEnter}
-                      onMouseLeave={this.tableContentMouseLeave}
-                    >
-                      {typeof e.price === 'number' ? '$' + e.price : ''}
-                      <span>
-                        {typeof e.price === 'number'
-                          ? '起'
-                          : e.price === '--'
-                          ? '查看'
-                          : ''}
-                      </span>
-                    </td>
-                  ))}
+                  <td>
+                    <div>
+                      {ele.detail.map((e, index) => (
+                        <div
+                          className={
+                            (e.cheapest === true ? 'cheapest' : '') +
+                            ' tableContent' +
+                            (this.state.contentHoverStatus ? ' active' : ' ')
+                          }
+                          key={index + +new Date()}
+                          onMouseEnter={this.tableContentMouseEnter}
+                          onMouseLeave={this.tableContentMouseLeave}
+                        >
+                          {typeof e.price === 'number' ? '$' + e.price : ''}
+                          <span>
+                            {typeof e.price === 'number'
+                              ? '起'
+                              : e.price === '--'
+                              ? '查看'
+                              : ''}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>

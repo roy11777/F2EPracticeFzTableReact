@@ -35,12 +35,16 @@ body {
 table {
   width: 100%;
   border-collapse: collapse;
-  border-spacing: 1px;
+  border-spacing: 0 !important;
   text-align: center;
   font-size: 1rem;
   font-family: "微軟正黑體", "Arial, Helvetica, sans-serif";
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+}
+
+table tbody tr {
+  width: 100%;
 }
 
 table tbody tr .dateIntervalLeft {
@@ -53,6 +57,7 @@ table tbody tr .dateIntervalTop {
   font-size: 0.9rem;
   color: #666;
   background: #eaedf2;
+  cursor: default;
 }
 
 table tbody tr .category {
@@ -68,30 +73,51 @@ table tbody tr .category :last-child {
 }
 
 table tbody tr .category span {
-  margin: 3px;
+  margin: 0 3px;
   display: block;
   color: #666;
-}
-
-table tbody tr .tableContent {
-  cursor: pointer;
-}
-
-table tbody tr .active:hover {
-  background: #fff9e3;
-  border: 1px solid #fe8b88;
-}
-
-table tbody tr td {
-  border: 1px solid #e1e2e4;
-  height: 50px;
-  margin: 0;
   font-size: 0.9rem;
 }
 
-table tbody tr td span {
+table tbody tr td {
+  padding: 0;
+  border: 1px solid #e1e2e4;
+}
+
+table tbody tr td div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+table tbody tr td div div:not(:first-child) {
+  border-left: 1px solid #e1e2e4;
+}
+
+table tbody tr td div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 50px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+table tbody tr td div div span {
   margin: 0 0 0 5px;
   color: #999;
   background: transparent;
+}
+
+table tbody tr td div .active:hover {
+  background: #fff9e3;
+  border: 1px solid #fe8b88;
 }
 /*# sourceMappingURL=main.css.map */

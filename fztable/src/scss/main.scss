@@ -12,6 +12,10 @@ $screen-desktop-wrapper: 1200px;
 
 // table字體
 $font-table-family: '微軟正黑體', 'Arial, Helvetica, sans-serif';
+// 表格表頭字體大小
+$font-table-dateSize: 0.9rem;
+// 表格內容字體大小
+$font-table-contentSize: 0.9rem;
 $table-contentColor: #999;
 $table-contentHoverBorder: #fe8b88;
 $table-HeadColor: #666;
@@ -54,30 +58,30 @@ table {
   width: 100%;
   //   讓table border合併成一邊框
   border-collapse: collapse;
-  border-spacing: 1px;
+  border-spacing: 0 !important;
   text-align: center;
   font-size: 1rem;
   font-family: $font-table-family;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   tbody {
     //   第一排表頭日期區間
-
     tr {
+      width: 100%;
       //   日期區間區
       // 左側表頭區
       .dateIntervalLeft {
-        font-size: 0.9rem;
+        font-size: $font-table-dateSize;
         color: $table-HeadColor;
         background: $table-HeadBackgroundLeft;
       }
       // 上側表頭區
       .dateIntervalTop {
-        font-size: 0.9rem;
+        font-size: $font-table-dateSize;
         color: $table-HeadColor;
         background: $table-HeadBackgroundTop;
+        cursor: default;
       }
-
       //   表頭分類區
       .category {
         background: $table-HeadBackgroundTop;
@@ -88,32 +92,46 @@ table {
           text-align: left;
         }
         span {
-          margin: 3px;
+          margin: 0 3px;
           display: block;
           color: $table-HeadColor;
-        }
-      }
-      //   內文區
-      .tableContent {
-        cursor: pointer;
-      }
-      .active {
-        &:hover {
-          background: #fff9e3;
-          border: 1px solid $table-contentHoverBorder;
+          font-size: $font-table-dateSize;
         }
       }
       td {
+        padding: 0;
         border: 1px solid $table-borderColor;
-        height: 50px;
-        margin: 0;
-        font-size: 0.9rem;
+        div {
+          width: 100%;
+          display: flex;
+          div:not(:first-child) {
+            border-left: 1px solid $table-borderColor;
+          }
+          div {
+            // 水平垂直置中
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-        //   價格區
-        span {
-          margin: 0 0 0 5px;
-          color: $table-contentColor;
-          background: transparent;
+            height: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            //   價格區
+            span {
+              margin: 0 0 0 5px;
+              color: $table-contentColor;
+              background: transparent;
+            }
+          }
+          //   內文區
+          //   .tableContent {
+          //   }
+          .active {
+            &:hover {
+              background: #fff9e3;
+              border: 1px solid $table-contentHoverBorder;
+            }
+          }
         }
       }
     }
