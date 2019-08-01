@@ -1,0 +1,87 @@
+@charset "UTF-8";
+body {
+  background: #f4f4f4;
+}
+
+.wrapper {
+  width: 710px;
+  margin: 0 auto;
+}
+
+.cheapest {
+  position: relative;
+}
+
+.cheapest ::before {
+  content: '最便宜';
+  font-size: 0.75rem;
+  color: #ff8e26;
+  position: absolute;
+  top: 0;
+  left: 20px;
+}
+
+.cheapest ::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top: 10px solid #ff8e26;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #ff8e26;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "微軟正黑體", "Arial, Helvetica, sans-serif";
+  padding: 0;
+  margin: 0;
+}
+
+table tbody tr .dateIntervalLeft {
+  font-size: 0.9rem;
+  color: #666;
+  background: #f1f1f1;
+}
+
+table tbody tr .dateIntervalTop {
+  font-size: 0.9rem;
+  color: #666;
+  background: #eaedf2;
+}
+
+table tbody tr .category {
+  background: #eaedf2;
+}
+
+table tbody tr .category :first-child {
+  text-align: right;
+}
+
+table tbody tr .category :last-child {
+  text-align: left;
+}
+
+table tbody tr .category span {
+  margin: 3px;
+  display: block;
+  color: #666;
+}
+
+table tbody tr td {
+  border: 1px solid #e1e2e4;
+  height: 50px;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+table tbody tr td span {
+  margin: 0 0 0 5px;
+  color: #999;
+  background: transparent;
+}
+/*# sourceMappingURL=main.css.map */

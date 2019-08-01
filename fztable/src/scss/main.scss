@@ -1,0 +1,97 @@
+// table字體
+$font-table-family: '微軟正黑體', 'Arial, Helvetica, sans-serif';
+$table-contentColor: #999;
+$table-HeadColor: #666;
+$table-HeadBackgroundTop: #eaedf2;
+$table-HeadBackgroundLeft: #f1f1f1;
+$table-triangleColor: #ff8e26;
+$table-borderColor: #e1e2e4;
+
+body {
+  background: #f4f4f4;
+}
+.wrapper {
+  width: 710px;
+  margin: 0 auto;
+}
+.cheapest {
+  position: relative;
+
+  ::before {
+    content: '最便宜';
+    font-size: 0.75rem;
+    color: #ff8e26;
+    position: absolute;
+    top: 0;
+    left: 20px;
+  }
+  ::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: 10px solid $table-triangleColor;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid $table-triangleColor;
+  }
+}
+table {
+  // 表格基礎設定
+  width: 100%;
+  //   讓table border無間距
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 1rem;
+  font-family: $font-table-family;
+  padding: 0;
+  margin: 0;
+  tbody {
+    //   第一排表頭日期區間
+
+    tr {
+      //   日期區間區
+      // 左側表頭區
+      .dateIntervalLeft {
+        font-size: 0.9rem;
+        color: $table-HeadColor;
+        background: $table-HeadBackgroundLeft;
+      }
+      // 上側表頭區
+      .dateIntervalTop {
+        font-size: 0.9rem;
+        color: $table-HeadColor;
+        background: $table-HeadBackgroundTop;
+      }
+
+      //   表頭分類區
+      .category {
+        background: $table-HeadBackgroundTop;
+        :first-child {
+          text-align: right;
+        }
+        :last-child {
+          text-align: left;
+        }
+        span {
+          margin: 3px;
+          display: block;
+          color: $table-HeadColor;
+        }
+      }
+      //   內文區
+      td {
+        border: 1px solid $table-borderColor;
+        height: 50px;
+        margin: 0;
+        font-size: 0.9rem;
+        //   價格區
+        span {
+          margin: 0 0 0 5px;
+          color: $table-contentColor;
+          background: transparent;
+        }
+      }
+    }
+  }
+}
