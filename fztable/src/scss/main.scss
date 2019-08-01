@@ -7,8 +7,8 @@ $screen-phone-max: 767px;
 $screen-tablet-max: 979px;
 $screen-desktop-max: 1279px;
 
-$screen-lg-desktop-wrapper: 960px;
-$screen-desktop-wrapper: 1200px;
+$screen-lg-desktop-wrapper: 890px;
+$screen-desktop-wrapper: 710px;
 
 // table字體
 $font-table-family: '微軟正黑體', 'Arial, Helvetica, sans-serif';
@@ -28,8 +28,11 @@ body {
   background: #f4f4f4;
 }
 .wrapper {
-  width: 710px;
+  width: $screen-lg-desktop-wrapper;
   margin: 0 auto;
+  @media screen and (max-width: $screen-desktop-max) {
+    width: $screen-desktop-wrapper;
+  }
 }
 .cheapest {
   position: relative;
@@ -66,6 +69,8 @@ table {
   margin: 0 auto;
   tbody {
     //   第一排表頭日期區間
+    border-top: 1px solid $table-borderColor;
+    border-right: 1px solid $table-borderColor;
     tr {
       width: 100%;
       //   日期區間區
@@ -74,6 +79,11 @@ table {
         font-size: $font-table-dateSize;
         color: $table-HeadColor;
         background: $table-HeadBackgroundLeft;
+        div {
+          cursor: default;
+          background: $table-HeadBackgroundLeft;
+          justify-content: center;
+        }
       }
       // 上側表頭區
       .dateIntervalTop {
@@ -85,6 +95,9 @@ table {
       //   表頭分類區
       .category {
         background: $table-HeadBackgroundTop;
+        cursor: default;
+        display: block;
+        padding: 3px;
         :first-child {
           text-align: right;
         }
@@ -101,14 +114,29 @@ table {
       //   表格內容設定
       td {
         padding: 0;
-        border: 1px solid $table-borderColor;
         div {
+          // 按鈕後新增的class
           width: 100%;
           display: flex;
-          div:not(:first-child) {
-            border-left: 1px solid $table-borderColor;
+          background: #fff;
+          .alignInicator {
+            background: #f7f7f7;
           }
+          //   div:not(:first-child) {
+          //     // border-left: 1px solid $table-borderColor;
+          //   }
+          .active {
+            background: #fff9e3;
+            border: 1px solid $table-contentHoverBorder;
+          }
+          .hover {
+            background: #fff9e3;
+            border: 1px solid $table-contentHoverBorder;
+          }
+          box-sizing: border-box;
           div {
+            border-left: 1px solid $table-borderColor;
+            border-bottom: 1px solid $table-borderColor;
             // 水平垂直置中
             display: flex;
             align-items: center;
@@ -126,12 +154,6 @@ table {
           }
           //   .tableContent {
           //   }
-          .active {
-            &:hover {
-              background: #fff9e3;
-              border: 1px solid $table-contentHoverBorder;
-            }
-          }
         }
       }
     }

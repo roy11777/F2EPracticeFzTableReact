@@ -4,8 +4,14 @@ body {
 }
 
 .wrapper {
-  width: 710px;
+  width: 890px;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 1279px) {
+  .wrapper {
+    width: 710px;
+  }
 }
 
 .cheapest {
@@ -43,6 +49,11 @@ table {
   margin: 0 auto;
 }
 
+table tbody {
+  border-top: 1px solid #e1e2e4;
+  border-right: 1px solid #e1e2e4;
+}
+
 table tbody tr {
   width: 100%;
 }
@@ -51,6 +62,14 @@ table tbody tr .dateIntervalLeft {
   font-size: 0.9rem;
   color: #666;
   background: #f1f1f1;
+}
+
+table tbody tr .dateIntervalLeft div {
+  cursor: default;
+  background: #f1f1f1;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 table tbody tr .dateIntervalTop {
@@ -62,6 +81,9 @@ table tbody tr .dateIntervalTop {
 
 table tbody tr .category {
   background: #eaedf2;
+  cursor: default;
+  display: block;
+  padding: 3px;
 }
 
 table tbody tr .category :first-child {
@@ -81,7 +103,6 @@ table tbody tr .category span {
 
 table tbody tr td {
   padding: 0;
-  border: 1px solid #e1e2e4;
 }
 
 table tbody tr td div {
@@ -89,13 +110,28 @@ table tbody tr td div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-table tbody tr td div div:not(:first-child) {
-  border-left: 1px solid #e1e2e4;
+table tbody tr td div .alignInicator {
+  background: #f7f7f7;
+}
+
+table tbody tr td div .active {
+  background: #fff9e3;
+  border: 1px solid #fe8b88;
+}
+
+table tbody tr td div .hover {
+  background: #fff9e3;
+  border: 1px solid #fe8b88;
 }
 
 table tbody tr td div div {
+  border-left: 1px solid #e1e2e4;
+  border-bottom: 1px solid #e1e2e4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,10 +150,5 @@ table tbody tr td div div span {
   margin: 0 0 0 5px;
   color: #999;
   background: transparent;
-}
-
-table tbody tr td div .active:hover {
-  background: #fff9e3;
-  border: 1px solid #fe8b88;
 }
 /*# sourceMappingURL=main.css.map */
