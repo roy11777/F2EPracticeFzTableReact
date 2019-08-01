@@ -7,6 +7,7 @@ class Mainpage extends React.Component {
     this.state = {
       Info: [],
       goAndBackDate: [],
+      contentHoverStatus: true,
     }
   }
 
@@ -36,6 +37,15 @@ class Mainpage extends React.Component {
     }
   }
 
+  tableContentMouseEnter = e => {
+    console.log(e.target)
+    this.setState({ contentHoverStatus: true })
+  }
+  tableContentMouseLeave = (e) => {
+    console.log(e.target)
+    this.setState({ contentHoverStatus: false })
+  }
+
   render() {
     return (
       <>
@@ -59,8 +69,14 @@ class Mainpage extends React.Component {
                   <td className="dateIntervalLeft">{ele.goDate}</td>
                   {ele.detail.map((e, index) => (
                     <td
-                      className={e.cheapest === true ? 'cheapest' : ''}
+                      className={
+                        (e.cheapest === true ? 'cheapest' : '') +
+                        ' tableContent' +
+                        (this.state.contentHoverStatus ? ' active' : ' ')
+                      }
                       key={index + +new Date()}
+                      onMouseEnter={this.tableContentMouseEnter}
+                      onMouseLeave={this.tableContentMouseLeave}
                     >
                       {typeof e.price === 'number' ? '$' + e.price : ''}
                       <span>

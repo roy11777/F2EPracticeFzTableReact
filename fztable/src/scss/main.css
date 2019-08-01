@@ -35,6 +35,7 @@ body {
 table {
   width: 100%;
   border-collapse: collapse;
+  border-spacing: 1px;
   text-align: center;
   font-size: 1rem;
   font-family: "微軟正黑體", "Arial, Helvetica, sans-serif";
@@ -70,6 +71,15 @@ table tbody tr .category span {
   margin: 3px;
   display: block;
   color: #666;
+}
+
+table tbody tr .tableContent {
+  cursor: pointer;
+}
+
+table tbody tr .active:hover {
+  background: #fff9e3;
+  border: 1px solid #fe8b88;
 }
 
 table tbody tr td {
