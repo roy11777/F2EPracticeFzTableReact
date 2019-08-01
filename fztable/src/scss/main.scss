@@ -98,6 +98,7 @@ table {
           font-size: $font-table-dateSize;
         }
       }
+      //   表格內容設定
       td {
         padding: 0;
         border: 1px solid $table-borderColor;
@@ -114,7 +115,7 @@ table {
             justify-content: center;
 
             height: 50px;
-            font-size: 0.9rem;
+            font-size: $font-table-contentSize;
             cursor: pointer;
             //   價格區
             span {
@@ -123,7 +124,6 @@ table {
               background: transparent;
             }
           }
-          //   內文區
           //   .tableContent {
           //   }
           .active {
