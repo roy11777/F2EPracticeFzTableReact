@@ -6,6 +6,12 @@ class Mainpage extends React.Component {
     // 預設banner開啟狀態
     this.state = {
       Info: [],
+      // M版時每次點擊往前往後移動幾格儲存格
+      slide: 1, // [number]
+      // M版時一個畫面show幾格儲存格
+      show: 2, // [number]
+      // 設定花多久時間移動完成
+      speed: 0.3, // [number]
     }
   }
 
@@ -17,6 +23,11 @@ class Mainpage extends React.Component {
           this.setState({ Info: obj.data[0].data })
           console.log(this.state.Info)
         })
+        .then(obj => {
+          this.hadleMobleShowControl()
+        })
+
+      window.addEventListener('resize', this.hadleMobleShowControl)
     } catch (e) {
       console.log(e)
     }
@@ -47,10 +58,54 @@ class Mainpage extends React.Component {
 
     // 相同列的變色
     // 用currentTarget可選到當前綁定的元素不會選到子元素
-    e.currentTarget.classList.add('active')
+    e.currentTarget.classList.add('active', 'hide')
     const rowBgSelect = e.currentTarget.parentNode.childNodes
     for (let i = 0; i < rowBgSelect.length; i++) {
       rowBgSelect[i].classList.add('alignInicator')
+    }
+  }
+
+  handleSlideLeft = () => {
+    const forAllselect = document.querySelectorAll('.forAllselect')
+
+    // 不同列的變色
+    function controlAllEle() {
+      for (let i = 0; i < forAllselect.length; i++) {
+        // // 在觸發變色前先將所有上一狀態的顏色清除
+        // forAllselect[i].classList.remove('alignInicator', 'active')
+        // 與點到的di於不同列相同index的變色
+        if (i % 7 > 3) {
+          forAllselect[i].classList.add('hide')
+        }
+      }
+    }
+  }
+
+  hadleMobleShowControl = () => {
+    console.log(document.body.clientWidth)
+    const forAllselect = document.querySelectorAll('.forAllselect')
+    const dateIntervalTop = document.querySelectorAll('.dateIntervalTop')
+    const mobileShow = this.state.show
+    if (document.body.clientWidth < 800) {
+      function mobileShowControl(ele) {
+        for (let i = 0; i < ele.length; i++) {
+          if (i % 7 > mobileShow) {
+            ele[i].classList.add('hide')
+          }
+        }
+      }
+      mobileShowControl(forAllselect)
+      mobileShowControl(dateIntervalTop)
+    } else {
+      function mobileShowControl(ele) {
+        for (let i = 0; i < ele.length; i++) {
+          if (i % 7 > mobileShow) {
+            ele[i].classList.remove('hide')
+          }
+        }
+      }
+      mobileShowControl(forAllselect)
+      mobileShowControl(dateIntervalTop)
     }
   }
 
@@ -60,6 +115,7 @@ class Mainpage extends React.Component {
         <div className="wrapper">
           <table>
             <tbody>
+              {/* <button>123</button> */}
               <tr>
                 <td className="firsTd">
                   <div className="categoryContainer">
@@ -71,10 +127,10 @@ class Mainpage extends React.Component {
                 </td>
 
                 <td className="seconTd">
-                  <div className="backDateContainer">
+                  <div className="backDateContainer ">
                     {this.state.Info.map((ele, index) => (
                       <div
-                        className="dateIntervalTop"
+                        className="dateIntervalTop "
                         key={index + +new Date()}
                       >
                         <span>{ele.goDate}</span>
@@ -108,7 +164,9 @@ class Mainpage extends React.Component {
                             e
                           )}
                         >
-                          {typeof e.price === 'number' ? '$' + e.price : ''}
+                          <span>
+                            {typeof e.price === 'number' ? '$' + e.price : ''}
+                          </span>
                           <span>
                             {typeof e.price === 'number'
                               ? '起'

@@ -4,19 +4,12 @@ body {
 }
 
 .wrapper {
-  width: 890px;
   margin: 0 auto;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) {
   .wrapper {
     width: 710px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .wrapper {
-    width: 1000px;
   }
 }
 
@@ -56,6 +49,7 @@ table {
 }
 
 table tbody {
+  width: 100%;
   border-bottom: 1px solid #e1e2e4;
   border-left: 1px solid #e1e2e4;
 }
@@ -65,6 +59,7 @@ table tbody tr {
 }
 
 table tbody tr .firsTd {
+  width: 90px;
   z-index: 5;
   border-right: 1px solid #e1e2e4;
 }
@@ -137,6 +132,16 @@ table tbody tr td .backDateContainer .dateIntervalTop {
           align-items: center;
 }
 
+table tbody tr td .backDateContainer .hide {
+  width: 0;
+  border: none;
+  display: none;
+}
+
+table tbody tr td .backDateContainer .hide span {
+  display: none;
+}
+
 table tbody tr td .categoryContainer {
   width: 100%;
   height: 100%;
@@ -149,6 +154,7 @@ table tbody tr td .categoryContainer .category {
   background: #eaedf2;
   cursor: default;
   display: block;
+  padding: 4px 0;
 }
 
 table tbody tr td .categoryContainer .category :first-child {
@@ -194,6 +200,15 @@ table tbody tr td .priceContainer .hover {
   border: 1px solid #fe8b88;
 }
 
+table tbody tr td .priceContainer .hide {
+  width: 0;
+  border: none;
+}
+
+table tbody tr td .priceContainer .hide span {
+  display: none;
+}
+
 table tbody tr td .priceContainer div {
   width: 100%;
   border-right: 1px solid #e1e2e4;
@@ -209,6 +224,10 @@ table tbody tr td .priceContainer div {
           justify-content: center;
   font-size: 0.9rem;
   cursor: pointer;
+}
+
+table tbody tr td .priceContainer div :first-child {
+  color: black;
 }
 
 table tbody tr td .priceContainer div span {
