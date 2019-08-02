@@ -61,8 +61,8 @@ class Mainpage extends React.Component {
           <table>
             <tbody>
               <tr>
-                <td>
-                  <div>
+                <td className="firsTd">
+                  <div className="categoryContainer">
                     <div className="category">
                       <span>回程</span>
                       <span>去程</span>
@@ -70,14 +70,14 @@ class Mainpage extends React.Component {
                   </div>
                 </td>
 
-                <td>
-                  <div>
+                <td className="seconTd">
+                  <div className="backDateContainer">
                     {this.state.Info.map((ele, index) => (
                       <div
                         className="dateIntervalTop"
                         key={index + +new Date()}
                       >
-                        {ele.goDate}
+                        <span>{ele.goDate}</span>
                       </div>
                     ))}
                   </div>
@@ -86,20 +86,18 @@ class Mainpage extends React.Component {
               {this.state.Info.map((ele, index) => (
                 <tr key={index + +new Date()}>
                   {/* 一定要用TD包ele不可單純用寫在這裡 */}
-                  <td className="dateIntervalLeft">
-                    <div>
-                      <div>
-                        <span>{ele.goDate}</span>
-                      </div>
+                  <td className="firsTd">
+                    <div className="dateIntervalLeft">
+                      <span>{ele.goDate}</span>
                     </div>
                   </td>
-                  <td>
-                    <div>
+                  <td className="seconTd">
+                    <div className="priceContainer">
                       {ele.detail.map((e, index) => (
                         <div
                           className={
                             (e.cheapest === true ? 'cheapest' : '') +
-                            ' forAllselect'
+                            'cellBox forAllselect'
                           }
                           key={index + +new Date()}
                           onMouseEnter={this.tableContentMouseEnter}

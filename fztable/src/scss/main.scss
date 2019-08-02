@@ -34,7 +34,7 @@ body {
     width: $screen-desktop-wrapper;
   }
   @media screen and (max-width: $screen-phone-max) {
-    // width: 300px;
+    width: 1000px;
   }
 }
 .cheapest {
@@ -72,62 +72,110 @@ table {
   margin: 0 auto;
   tbody {
     //   第一排表頭日期區間
-    border-top: 1px solid $table-borderColor;
-    border-right: 1px solid $table-borderColor;
+    border-bottom: 1px solid $table-borderColor;
+    border-left: 1px solid $table-borderColor;
     tr {
       width: 100%;
-      //   日期區間區
-      // 左側表頭區
-      .dateIntervalLeft {
-        font-size: $font-table-dateSize;
-        color: $table-HeadColor;
-        background: $table-HeadBackgroundLeft;
-        div {
-          cursor: default;
-          background: $table-HeadBackgroundLeft;
-          justify-content: center;
-        }
+      .firsTd {
+        z-index: 5;
+        border-right: 1px solid $table-borderColor;
       }
-      // 上側表頭區
-      .dateIntervalTop {
-        font-size: $font-table-dateSize;
-        color: $table-HeadColor;
-        background: $table-HeadBackgroundTop;
-        cursor: default;
+      .seconTd {
+        z-index: 1;
       }
-      //   表頭分類區
-      .category {
-        background: $table-HeadBackgroundTop;
-        cursor: default;
-        display: block;
-        padding: 3px;
-        :first-child {
-          text-align: right;
-        }
-        :last-child {
-          text-align: left;
-        }
-        span {
-          margin: 0 3px;
-          display: block;
-          color: $table-HeadColor;
-          font-size: $font-table-dateSize;
-        }
-      }
-      //   表格內容設定
+
       td {
+        height: 50px;
         padding: 0;
-        div {
+
+        //   日期區間區
+        // 左側表頭區
+        .dateIntervalLeft {
+          width: 100%;
+          height: 100%;
+          font-size: $font-table-dateSize;
+          color: $table-HeadColor;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-top: 1px solid $table-borderColor;
+          background: $table-HeadBackgroundLeft;
+          div {
+            cursor: default;
+            justify-content: center;
+          }
+        }
+
+        // 上側表頭區
+        .backDateContainer {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: $table-HeadBackgroundTop;
+          .dateIntervalTop {
+            border-right: 1px solid $table-borderColor;
+            border-top: 1px solid $table-borderColor;
+            width: 100%;
+            height: 100%;
+            font-size: $font-table-dateSize;
+            color: $table-HeadColor;
+            cursor: default;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+        //   表頭分類區
+        .categoryContainer {
+          width: 100%;
+          height: 100%;
+          border-top: 1px solid $table-borderColor;
+          .category {
+            width: 100%;
+            height: 100%;
+            background: $table-HeadBackgroundTop;
+            cursor: default;
+            display: block;
+            //   padding: 4px 0;
+
+            :first-child {
+              text-align: right;
+            }
+            :last-child {
+              text-align: left;
+            }
+            span {
+              margin: 0 3px;
+              display: block;
+              color: $table-HeadColor;
+              font-size: $font-table-dateSize;
+            }
+          }
+        }
+
+        // .backDateContainer {
+        //   // width: 15%;
+        // }
+        //   表格內容設定
+
+        .priceContainer {
+          //   position: absolute;
+          //   top: 0;
+          //   left: -30px;
           // 按鈕後新增的class
           width: 100%;
+          box-sizing: border-box;
+          height: 100%;
           display: flex;
+          justify-content: space-between;
           background: #fff;
+
           .alignInicator {
             background: #f7f7f7;
           }
-          //   div:not(:first-child) {
-          //     // border-left: 1px solid $table-borderColor;
-          //   }
+
           .active {
             background: #fff9e3;
             border: 1px solid $table-contentHoverBorder;
@@ -136,16 +184,16 @@ table {
             background: #fff9e3;
             border: 1px solid $table-contentHoverBorder;
           }
-          box-sizing: border-box;
+
           div {
-            border-left: 1px solid $table-borderColor;
-            border-bottom: 1px solid $table-borderColor;
+            width: 100%;
+            border-right: 1px solid $table-borderColor;
+            border-top: 1px solid $table-borderColor;
             // 水平垂直置中
             display: flex;
             align-items: center;
             justify-content: center;
 
-            height: 50px;
             font-size: $font-table-contentSize;
             cursor: pointer;
             //   價格區
@@ -155,8 +203,6 @@ table {
               background: transparent;
             }
           }
-          //   .tableContent {
-          //   }
         }
       }
     }
