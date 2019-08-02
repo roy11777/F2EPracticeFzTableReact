@@ -14,6 +14,16 @@ body {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .wrapper {
+    width: 300px;
+  }
+}
+
+.d-none {
+  display: none;
+}
+
 .cheapest {
   position: relative;
 }
@@ -130,6 +140,9 @@ table tbody tr td div .hover {
 }
 
 table tbody tr td div div {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   border-left: 1px solid #e1e2e4;
   border-bottom: 1px solid #e1e2e4;
   display: -webkit-box;

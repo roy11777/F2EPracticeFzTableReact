@@ -34,8 +34,11 @@ body {
     width: $screen-desktop-wrapper;
   }
   @media screen and (max-width: $screen-phone-max) {
-    // width: 300px;
+    width: 300px;
   }
+}
+.d-none {
+  display: none;
 }
 .cheapest {
   position: relative;
@@ -122,6 +125,7 @@ table {
           width: 100%;
           display: flex;
           background: #fff;
+          box-sizing: border-box;
           .alignInicator {
             background: #f7f7f7;
           }
@@ -136,8 +140,8 @@ table {
             background: #fff9e3;
             border: 1px solid $table-contentHoverBorder;
           }
-          box-sizing: border-box;
           div {
+            flex-grow: 1;
             border-left: 1px solid $table-borderColor;
             border-bottom: 1px solid $table-borderColor;
             // 水平垂直置中
@@ -155,8 +159,6 @@ table {
               background: transparent;
             }
           }
-          //   .tableContent {
-          //   }
         }
       }
     }
