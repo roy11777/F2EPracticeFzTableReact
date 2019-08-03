@@ -144,7 +144,9 @@ class Mainpage extends React.Component {
                   {/* 一定要用TD包ele不可單純用寫在這裡 */}
                   <td className="firsTd">
                     <div className="dateIntervalLeft">
-                      <span>{ele.goDate}</span>
+                      <div>
+                        <span>{ele.goDate}</span>
+                      </div>
                     </div>
                   </td>
                   <td className="seconTd">
