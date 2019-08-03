@@ -1,0 +1,234 @@
+$screen-phone: 320px; // 手機 ;
+$screen-tablet: 768px; // 平板
+$screen-desktop: 980px; // 筆電、桌機
+$screen-lg-desktop: 1280px; // 較大桌機　
+
+$screen-phone-max: 767px;
+$screen-tablet-max: 979px;
+$screen-desktop-max: 1279px;
+
+$screen-lg-desktop-wrapper: 890px;
+$screen-desktop-wrapper: 710px;
+
+// table字體
+$font-table-family: '微軟正黑體', 'Arial, Helvetica, sans-serif';
+// 表格表頭字體大小
+$font-table-dateSize: 0.9rem;
+// 表格內容字體大小
+$font-table-contentSize: 0.9rem;
+$table-contentColor: #999;
+$table-contentHoverBorder: #fe8b88;
+$table-HeadColor: #666;
+$table-HeadBackgroundTop: #eaedf2;
+$table-HeadBackgroundLeft: #f1f1f1;
+$table-triangleColor: #ff8e26;
+$table-borderColor: #e1e2e4;
+
+body {
+  background: #f4f4f4;
+}
+.wrapper {
+  // width: $screen-lg-desktop-wrapper;
+  margin: 0 auto;
+  @media screen and (min-width: $screen-tablet) {
+    width: $screen-desktop-wrapper;
+  }
+  @media screen and (max-width: $screen-phone-max) {
+    // width: 1020px;
+  }
+}
+.cheapest {
+  position: relative;
+
+  ::before {
+    content: '最便宜';
+    font-size: 0.75rem;
+    color: #ff8e26;
+    position: absolute;
+    top: 0;
+    left: 20px;
+  }
+  ::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: 10px solid $table-triangleColor;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid $table-triangleColor;
+  }
+}
+table {
+  // 表格基礎設定
+  width: 100%;
+  //   讓table border合併成一邊框
+  border-collapse: collapse;
+  border-spacing: 0 !important;
+  text-align: center;
+  font-size: 1rem;
+  font-family: $font-table-family;
+  padding: 0;
+  margin: 0 auto;
+  tbody {
+    width: 100%;
+    //   第一排表頭日期區間
+    border-bottom: 1px solid $table-borderColor;
+    border-left: 1px solid $table-borderColor;
+    tr {
+      width: 100%;
+      .firsTd {
+        width: 90px;
+        z-index: 5;
+        border-right: 1px solid $table-borderColor;
+      }
+      .seconTd {
+        z-index: 1;
+      }
+
+      td {
+        height: 50px;
+        padding: 0;
+
+        //   日期區間區
+        // 左側表頭區
+        .dateIntervalLeft {
+          width: 100%;
+          height: 100%;
+          font-size: $font-table-dateSize;
+          color: $table-HeadColor;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-top: 1px solid $table-borderColor;
+          background: $table-HeadBackgroundLeft;
+          div {
+            cursor: default;
+            justify-content: center;
+          }
+        }
+
+        // 上側表頭區
+        .backDateContainer {
+     
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: $table-HeadBackgroundTop;
+          .dateIntervalTop {
+            border-right: 1px solid $table-borderColor;
+            border-top: 1px solid $table-borderColor;
+            width: 100%;
+            height: 100%;
+            font-size: $font-table-dateSize;
+            color: $table-HeadColor;
+            cursor: default;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .hide {
+            width: 0;
+            // transition: 0.5s;
+            border: none;
+            display: none;
+            span {
+              display: none;
+            }
+          }
+        }
+        //   表頭分類區
+        .categoryContainer {
+          width: 100%;
+          height: 100%;
+          border-top: 1px solid $table-borderColor;
+          .category {
+            width: 100%;
+            height: 100%;
+            background: $table-HeadBackgroundTop;
+            cursor: default;
+            display: block;
+            padding: 4px 0;
+
+            :first-child {
+              text-align: right;
+            }
+            :last-child {
+              text-align: left;
+            }
+            span {
+              margin: 0 3px;
+              display: block;
+              color: $table-HeadColor;
+              font-size: $font-table-dateSize;
+            }
+          }
+        }
+
+        // .backDateContainer {
+        //   // width: 15%;
+        // }
+        //   表格內容設定
+        // position: relative;
+        .priceContainer {
+          // position: absolute;
+          // top: 0;
+          // left: -30px;
+          // z-index:0;
+          // 按鈕後新增的class
+          width: 100%;
+          box-sizing: border-box;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          background: #fff;
+
+          .alignInicator {
+            background: #f7f7f7;
+          }
+
+          .active {
+            background: #fff9e3;
+            border: 1px solid $table-contentHoverBorder;
+          }
+          .hover {
+            background: #fff9e3;
+            border: 1px solid $table-contentHoverBorder;
+          }
+          .hide {
+            width: 0;
+            // transition: 0.5s;
+            border: none;
+            span {
+              display: none;
+            }
+          }
+          
+          div {
+            width: 100%;
+            border-right: 1px solid $table-borderColor;
+            border-top: 1px solid $table-borderColor;
+            // 水平垂直置中
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: $font-table-contentSize;
+            cursor: pointer;
+            //   價格區
+            :first-child {
+              color: black;
+            }
+            span {
+              margin: 0 0 0 5px;
+              color: $table-contentColor;
+              background: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+}
