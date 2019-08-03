@@ -68,9 +68,14 @@ table tbody tr .firsTd {
   height: 50px;
 }
 
+table tbody tr .seconTd {
+  position: relative;
+}
+
 table tbody tr td {
   height: 50px;
   padding: 0;
+  overflow: hidden;
 }
 
 table tbody tr td .dateIntervalLeft {
@@ -117,6 +122,15 @@ table tbody tr td .backDateContainer {
 @media screen and (min-width: 768px) {
   table tbody tr td .backDateContainer {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  table tbody tr td .backDateContainer {
+    position: absolute;
+    top: 0;
+    -webkit-transition: 0.7s;
+    transition: 0.7s;
   }
 }
 
@@ -199,6 +213,15 @@ table tbody tr td .priceContainer {
 @media screen and (min-width: 768px) {
   table tbody tr td .priceContainer {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  table tbody tr td .priceContainer {
+    position: absolute;
+    top: 0;
+    -webkit-transition: 0.7s;
+    transition: 0.7s;
   }
 }
 

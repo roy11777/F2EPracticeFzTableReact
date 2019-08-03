@@ -24,13 +24,19 @@ $table-HeadBackgroundLeft: #f1f1f1;
 $table-HeadWidthLeft: 90px;
 $table-triangleColor: #ff8e26;
 $table-borderColor: #e1e2e4;
+// 下兩個分母要相同
+$table-mobole-cellWidth: calc((100vw - 90px) / 3);
+$table-mobole-slideLeft: (calc((0px - (100vw - 90px)) / 3));
 
 @mixin ContainerSize {
   @media screen and (min-width: $screen-tablet) {
     width: 100%;
   }
   @media screen and (max-width: $screen-phone-max) {
-    // width: calc((100vw - 90px) / 3);
+    position: absolute;
+    top: 0;
+    // left: $table-mobole-slideLeft;
+    transition: 0.7s;
   }
 }
 @mixin CellSize {
@@ -39,7 +45,7 @@ $table-borderColor: #e1e2e4;
   }
   @media screen and (max-width: $screen-phone-max) {
     // 減掉左側表頭寬度
-    width: calc((100vw - 90px) / 3);
+    width: $table-mobole-cellWidth;
   }
 }
 
@@ -102,11 +108,14 @@ table {
 
         height: 50px;
       }
+      .seconTd {
+        position: relative;
+      }
 
       td {
         height: 50px;
         padding: 0;
-
+        overflow: hidden;
         //   日期區間區
         // 左側表頭區
         .dateIntervalLeft {
