@@ -7,9 +7,15 @@ body {
   margin: 0 auto;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 980px) {
   .wrapper {
-    width: 710px;
+    width: 980px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 979px) {
+  .wrapper {
+    width: 768px;
   }
 }
 
@@ -105,6 +111,36 @@ table tbody tr td .dateIntervalLeft div {
           justify-content: center;
 }
 
+@media screen and (min-width: 768px) {
+  table tbody tr td div {
+    width: 100%;
+  }
+  table tbody tr td .dateIntervalTop {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  table tbody tr td .slide0 {
+    left: 0;
+  }
+  table tbody tr td .slide0 .cellDefault {
+    width: calc(calc(100vw - 92px) / 3);
+  }
+  table tbody tr td .cell2 {
+    width: calc(calc(100vw - 92px) / 2) !important;
+  }
+  table tbody tr td .cell3 {
+    width: calc(calc(100vw - 92px) / 3) !important;
+  }
+  table tbody tr td .cell4 {
+    width: calc(calc(100vw - 92px) / 4) !important;
+  }
+  table tbody tr td .slide3 {
+    left: calc( (calc(calc(100vw - 92px) / 3)) * -2 + calc(1px * -2)) !important;
+  }
+}
+
 table tbody tr td .backDateContainer {
   height: 100%;
   display: -webkit-box;
@@ -129,6 +165,7 @@ table tbody tr td .backDateContainer {
   table tbody tr td .backDateContainer {
     position: absolute;
     top: 0;
+    left: 0;
     -webkit-transition: 0.7s;
     transition: 0.7s;
   }
@@ -137,7 +174,6 @@ table tbody tr td .backDateContainer {
 table tbody tr td .backDateContainer .dateIntervalTop {
   border-right: 1px solid #e1e2e4;
   border-top: 1px solid #e1e2e4;
-  width: 100%;
   height: 100%;
   font-size: 0.9rem;
   color: #666;
@@ -151,18 +187,6 @@ table tbody tr td .backDateContainer .dateIntervalTop {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-@media screen and (min-width: 768px) {
-  table tbody tr td .backDateContainer .dateIntervalTop {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  table tbody tr td .backDateContainer .dateIntervalTop {
-    width: calc((100vw - 90px) / 3);
-  }
 }
 
 table tbody tr td .categoryContainer {
@@ -220,6 +244,7 @@ table tbody tr td .priceContainer {
   table tbody tr td .priceContainer {
     position: absolute;
     top: 0;
+    left: 0;
     -webkit-transition: 0.7s;
     transition: 0.7s;
   }
@@ -253,18 +278,6 @@ table tbody tr td .priceContainer div {
           justify-content: center;
   font-size: 0.9rem;
   cursor: pointer;
-}
-
-@media screen and (min-width: 768px) {
-  table tbody tr td .priceContainer div {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  table tbody tr td .priceContainer div {
-    width: calc((100vw - 90px) / 3);
-  }
 }
 
 table tbody tr td .priceContainer div :first-child {
