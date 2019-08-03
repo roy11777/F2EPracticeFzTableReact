@@ -21,8 +21,110 @@ $table-contentHoverBorder: #fe8b88;
 $table-HeadColor: #666;
 $table-HeadBackgroundTop: #eaedf2;
 $table-HeadBackgroundLeft: #f1f1f1;
+$table-HeadWidthLeft: 90px;
 $table-triangleColor: #ff8e26;
 $table-borderColor: #e1e2e4;
+
+// M版table顯示總寬度(RWD)
+$showWitdh: calc(100vw - 92px);
+
+// M版table顯示格數
+// vw減去左側表頭寬度除以要顯示的格數
+$table-mobole-cell1Width: calc(#{$showWitdh});
+$table-mobole-cell2Width: calc(#{$showWitdh} / 2);
+$table-mobole-cell3Width: calc(#{$showWitdh} / 3);
+$table-mobole-cell4Width: calc(#{$showWitdh} / 4);
+
+// 一次滑動格數與方向與對應扣掉邊界
+$slidesLeft1: -1;
+$slidesLeft2: -2;
+$slidesLeft3: -3;
+$slidesLeft4: -4;
+$border1: calc(1px * #{$slidesLeft1});
+$border2: calc(1px * #{$slidesLeft2});
+$border3: calc(1px * #{$slidesLeft3});
+$border4: calc(1px * #{$slidesLeft4});
+
+// $table-mobole-col2Left1: calc(((0px - #{$showWitdh}) / 2) - #{$border});
+// $table-mobole-col2Left2: calc(
+//   (((#{$showWitdh}) / 2) - #{$border}) * #{$slides}
+// );
+// $table-mobole-col3Left1: calc(((0px - #{$showWitdh}) / 3) - #{$border});
+$table-mobole-col3Left1: calc(
+  (#{$table-mobole-cell3Width}) * #{$slidesLeft1} + #{$border1}
+);
+$table-mobole-col3Left2: calc(
+  (#{$table-mobole-cell3Width}) * #{$slidesLeft2} + #{$border2}
+);
+$table-mobole-col3Left3: calc(
+  (#{$table-mobole-cell3Width}) * #{$slidesLeft3} + #{$border3}
+);
+$table-mobole-col3Left4: calc(
+  (#{$table-mobole-cell3Width}) * #{$slidesLeft4} + #{$border4}
+);
+// $table-mobole-col4Left1: calc(((0px - #{$showWitdh}) / 4) - #{$border});
+// $table-mobole-col4Left2: calc(
+//   (((#{$showWitdh}) / 4) - #{$border}) * #{$slides}
+// );
+
+@mixin ContainerSize {
+  @media screen and (min-width: $screen-tablet) {
+    width: 100%;
+  }
+  @media screen and (max-width: $screen-phone-max) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.7s;
+  }
+}
+// 欄寬度控制
+@mixin CellSize {
+  @media screen and (min-width: $screen-tablet) {
+    div {
+      width: 100%;
+    }
+    .dateIntervalTop {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: $screen-phone-max) {
+    // 減掉左側表頭寬度
+    // .slide0 {
+    //   left: 0;
+    // }
+    .cell1 {
+      width: $table-mobole-cell1Width;
+    }
+    .cell2 {
+      width: $table-mobole-cell2Width;
+    }
+    .cell3 {
+      width: $table-mobole-cell3Width;
+    }
+    .cell4 {
+      width: $table-mobole-cell4Width;
+    }
+    // .slide2 {
+    //   left: $table-mobole-col2Left1 !important;
+    // }
+    .slide1 {
+      left: $table-mobole-col3Left1 !important;
+    }
+    .slide2 {
+      left: $table-mobole-col3Left2 !important;
+    }
+    .slide3 {
+      left: $table-mobole-col3Left3 !important;
+    }
+    .slide4 {
+      left: $table-mobole-col3Left4 !important;
+    }
+    // .slide4 {
+    //   left: $table-mobole-col4Left !important;
+    // }
+  }
+}
 
 body {
   background: #f4f4f4;
@@ -30,11 +132,15 @@ body {
 .wrapper {
   // width: $screen-lg-desktop-wrapper;
   margin: 0 auto;
-  @media screen and (min-width: $screen-tablet) {
-    width: $screen-desktop-wrapper;
+  @media screen and (min-width: $screen-desktop) {
+    width: $screen-desktop;
+  }
+  @media screen and (min-width: $screen-tablet) and (max-width: $screen-tablet-max) {
+    width: $screen-tablet;
   }
   @media screen and (max-width: $screen-phone-max) {
-    // width: 1020px;
+    // width: $screen-phone;
+    margin: 0;
   }
 }
 .cheapest {
@@ -59,6 +165,7 @@ body {
     border-left: 10px solid $table-triangleColor;
   }
 }
+
 table {
   // 表格基礎設定
   width: 100%;
@@ -74,53 +181,59 @@ table {
     width: 100%;
     //   第一排表頭日期區間
     border-bottom: 1px solid $table-borderColor;
-    border-left: 1px solid $table-borderColor;
     tr {
       width: 100%;
+
       .firsTd {
-        width: 90px;
-        z-index: 5;
-        border-right: 1px solid $table-borderColor;
+        width: $table-HeadWidthLeft;
+
+        height: 50px;
       }
       .seconTd {
-        z-index: 1;
+        position: relative;
       }
-
+      @include CellSize;
       td {
         height: 50px;
         padding: 0;
-
+        overflow: hidden;
         //   日期區間區
         // 左側表頭區
         .dateIntervalLeft {
-          width: 100%;
+          width: $table-HeadWidthLeft;
+          // padding: 0 10px;
           height: 100%;
           font-size: $font-table-dateSize;
           color: $table-HeadColor;
           display: flex;
           justify-content: center;
           align-items: center;
+          border-left: 1px solid $table-borderColor;
           border-top: 1px solid $table-borderColor;
+          border-right: 1px solid $table-borderColor;
           background: $table-HeadBackgroundLeft;
           div {
             cursor: default;
             justify-content: center;
           }
         }
-
+        // .slideLeft {
+        //   left: $table-mobole-slideLeft !important;
+        //   // transition: 0.5s;
+        // }
         // 上側表頭區
+
         .backDateContainer {
-     
-          width: 100%;
+          @include ContainerSize;
           height: 100%;
           display: flex;
           justify-content: space-between;
           align-items: center;
           background: $table-HeadBackgroundTop;
+
           .dateIntervalTop {
             border-right: 1px solid $table-borderColor;
             border-top: 1px solid $table-borderColor;
-            width: 100%;
             height: 100%;
             font-size: $font-table-dateSize;
             color: $table-HeadColor;
@@ -129,21 +242,14 @@ table {
             justify-content: center;
             align-items: center;
           }
-          .hide {
-            width: 0;
-            // transition: 0.5s;
-            border: none;
-            display: none;
-            span {
-              display: none;
-            }
-          }
         }
         //   表頭分類區
         .categoryContainer {
-          width: 100%;
+          width: $table-HeadWidthLeft;
           height: 100%;
           border-top: 1px solid $table-borderColor;
+          border-left: 1px solid $table-borderColor;
+          border-right: 1px solid $table-borderColor;
           .category {
             width: 100%;
             height: 100%;
@@ -167,18 +273,10 @@ table {
           }
         }
 
-        // .backDateContainer {
-        //   // width: 15%;
-        // }
-        //   表格內容設定
-        // position: relative;
         .priceContainer {
-          // position: absolute;
-          // top: 0;
-          // left: -30px;
-          // z-index:0;
           // 按鈕後新增的class
-          width: 100%;
+          @include ContainerSize;
+          // @include CellSize;
           box-sizing: border-box;
           height: 100%;
           display: flex;
@@ -197,17 +295,8 @@ table {
             background: #fff9e3;
             border: 1px solid $table-contentHoverBorder;
           }
-          .hide {
-            width: 0;
-            // transition: 0.5s;
-            border: none;
-            span {
-              display: none;
-            }
-          }
-          
+
           div {
-            width: 100%;
             border-right: 1px solid $table-borderColor;
             border-top: 1px solid $table-borderColor;
             // 水平垂直置中
