@@ -12,7 +12,6 @@ class Mainpage extends React.Component {
       show: 3, // [number]
       // 設定花多久時間移動完成
       speed: 0.3, // [number]
-      nowInfo: 1,
     }
   }
 
@@ -61,67 +60,69 @@ class Mainpage extends React.Component {
     }
   }
 
-  handleSlideLeft = async () => {
+  handleSlideLeft = () => {
     const backDateContainer = document.querySelectorAll('.backDateContainer')
     const priceContainer = document.querySelectorAll('.priceContainer')
-    const nowSlide = this.state.nowInfo
-    console.log(priceContainer)
-    // 不同列的變色
-    if (nowSlide < 4) {
-      this.setState({ nowInfo: nowSlide + 1 })
-      console.log(nowSlide)
-      console.log(this.state.nowInfo)
-    }
-    function controlAllEle(e) {
-      for (let i = 0; i < e.length; i++) {
-        // // 在觸發變色前先將所有上一狀態的顏色清除Y
-        console.log(e[i])
-        // e[i].classList.remove('slide' + (nowSlide - 1))
-        e[i].classList.add('slide' + nowSlide)
-        // 與點到的di於不同列相同index的變色
-        // if (i % 7 > 3) {
-        // }
+    const leftButton = document.querySelector('.leftButton')
+    const rightButton = document.querySelector('.rightButton')
+    const currentslide = Number(priceContainer[0].classList[1].split('').pop())
+    console.log(currentslide)
+    if (currentslide < 7 - this.state.show) {
+      function controlAllEle(e) {
+        for (let i = 0; i < e.length; i++) {
+          // // 在觸發變色前先將所有上一狀態的顏色清除Y
+          // console.log(e[i].classList)
+          e[i].classList.remove('slide' + currentslide)
+          e[i].classList.add('slide' + (1 + currentslide))
+        }
       }
+      controlAllEle(priceContainer)
+      controlAllEle(backDateContainer)
     }
-    controlAllEle(priceContainer)
-    await controlAllEle(backDateContainer)
+    if (currentslide >= 6 - this.state.show) {
+      leftButton.classList.add('d-none')
+    } else {
+      rightButton.classList.remove('d-none')
+    }
   }
-
-  // hadleMobleShowControl = () => {
-  //   console.log(document.body.clientWidth)
-  //   const forAllselect = document.querySelectorAll('.forAllselect')
-  //   const dateIntervalTop = document.querySelectorAll('.dateIntervalTop')
-  //   const mobileShow = this.state.show
-  //   if (document.body.clientWidth < 800) {
-  //     function mobileShowControl(ele) {
-  //       for (let i = 0; i < ele.length; i++) {
-  //         if (i % 7 > mobileShow) {
-  //           ele[i].classList.add('hide')
-  //         }
-  //       }
-  //     }
-  //     mobileShowControl(forAllselect)
-  //     mobileShowControl(dateIntervalTop)
-  //   } else {
-  //     function mobileShowControl(ele) {
-  //       for (let i = 0; i < ele.length; i++) {
-  //         if (i % 7 > mobileShow) {
-  //           ele[i].classList.remove('hide')
-  //         }
-  //       }
-  //     }
-  //     mobileShowControl(forAllselect)
-  //     mobileShowControl(dateIntervalTop)
-  //   }
-  // }
+  handleSlideRight = () => {
+    const backDateContainer = document.querySelectorAll('.backDateContainer')
+    const priceContainer = document.querySelectorAll('.priceContainer')
+    const rightButton = document.querySelector('.rightButton')
+    const leftButton = document.querySelector('.leftButton')
+    const currentslide = Number(priceContainer[0].classList[1].split('').pop())
+    console.log(currentslide)
+    if (currentslide > 0) {
+      function controlAllEle(e) {
+        for (let i = 0; i < e.length; i++) {
+          // // 在觸發變色前先將所有上一狀態的顏色清除Y
+          // console.log(e[i].classList)
+          e[i].classList.add('slide' + (currentslide - 1))
+          e[i].classList.remove('slide' + currentslide)
+        }
+      }
+      controlAllEle(priceContainer)
+      controlAllEle(backDateContainer)
+    }
+    if (currentslide === 1) {
+      rightButton.classList.add('d-none')
+    } else {
+      leftButton.classList.remove('d-none')
+    }
+  }
 
   render() {
     return (
       <>
         <div className="wrapper">
+          <div className="btn leftButton " onClick={this.handleSlideLeft}>
+            <span>&gt;</span>
+          </div>
+          <div className="btn rightButton " onClick={this.handleSlideRight}>
+            <span>&lt;</span>
+          </div>
           <table>
             <tbody>
-              <button onClick={this.handleSlideLeft}>123</button>
               <tr>
                 <td className="firsTd">
                   <div className="categoryContainer">
@@ -156,7 +157,7 @@ class Mainpage extends React.Component {
                     </div>
                   </td>
                   <td className="seconTd">
-                    <div className="priceContainer  ">
+                    <div className="priceContainer  slide0">
                       {ele.detail.map((e, index) => (
                         <div
                           className={

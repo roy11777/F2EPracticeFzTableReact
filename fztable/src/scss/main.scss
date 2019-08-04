@@ -40,28 +40,20 @@ $slidesLeft1: -1;
 $slidesLeft2: -2;
 $slidesLeft3: -3;
 $slidesLeft4: -4;
-$border1: calc(1px * #{$slidesLeft1});
-$border2: calc(1px * #{$slidesLeft2});
-$border3: calc(1px * #{$slidesLeft3});
-$border4: calc(1px * #{$slidesLeft4});
+// $border1: calc(1px * #{$slidesLeft1});
+// $border2: calc(1px * #{$slidesLeft2});
+// $border3: calc(1px * #{$slidesLeft3});
+// $border4: calc(1px * #{$slidesLeft4});
 
 // $table-mobole-col2Left1: calc(((0px - #{$showWitdh}) / 2) - #{$border});
 // $table-mobole-col2Left2: calc(
 //   (((#{$showWitdh}) / 2) - #{$border}) * #{$slides}
 // );
 // $table-mobole-col3Left1: calc(((0px - #{$showWitdh}) / 3) - #{$border});
-$table-mobole-col3Left1: calc(
-  (#{$table-mobole-cell3Width}) * #{$slidesLeft1} + #{$border1}
-);
-$table-mobole-col3Left2: calc(
-  (#{$table-mobole-cell3Width}) * #{$slidesLeft2} + #{$border2}
-);
-$table-mobole-col3Left3: calc(
-  (#{$table-mobole-cell3Width}) * #{$slidesLeft3} + #{$border3}
-);
-$table-mobole-col3Left4: calc(
-  (#{$table-mobole-cell3Width}) * #{$slidesLeft4} + #{$border4}
-);
+$table-mobole-col3Left1: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft1});
+$table-mobole-col3Left2: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft2});
+$table-mobole-col3Left3: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft3});
+$table-mobole-col3Left4: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft4});
 // $table-mobole-col4Left1: calc(((0px - #{$showWitdh}) / 4) - #{$border});
 // $table-mobole-col4Left2: calc(
 //   (((#{$showWitdh}) / 4) - #{$border}) * #{$slides}
@@ -75,7 +67,7 @@ $table-mobole-col3Left4: calc(
     position: absolute;
     top: 0;
     left: 0;
-    transition: 0.7s;
+    transition: 0.3s;
   }
 }
 // 欄寬度控制
@@ -130,6 +122,8 @@ body {
   background: #f4f4f4;
 }
 .wrapper {
+  position: relative;
+  z-index: 2;
   // width: $screen-lg-desktop-wrapper;
   margin: 0 auto;
   @media screen and (min-width: $screen-desktop) {
@@ -165,7 +159,30 @@ body {
     border-left: 10px solid $table-triangleColor;
   }
 }
+.d-none {
+  display: none;
+}
+.leftButton {
+  right: 0;
+}
+.rightButton {
+  left: 92px;
+}
 
+.btn {
+  @media screen and (min-width: $screen-tablet) {
+    display: none;
+  }
+  @media screen and (max-width: $screen-phone-max) {
+    position: absolute;
+    background: hsla(0, 0%, 67%, 0.5);
+    padding: 8px 5px 10px 5px;
+    color: #fff;
+    cursor: pointer;
+    top: 50%;
+    z-index: 5;
+  }
+}
 table {
   // 表格基礎設定
   width: 100%;
@@ -241,6 +258,7 @@ table {
             display: flex;
             justify-content: center;
             align-items: center;
+            box-sizing: border-box;
           }
         }
         //   表頭分類區
@@ -303,7 +321,7 @@ table {
             display: flex;
             align-items: center;
             justify-content: center;
-
+            box-sizing: border-box;
             font-size: $font-table-contentSize;
             cursor: pointer;
             //   價格區
