@@ -1,9 +1,26 @@
 @charset "UTF-8";
+.transition-03 {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.transition-06 {
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.transition-1 {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
 body {
   background: #f4f4f4;
 }
 
 .wrapper {
+  position: relative;
+  z-index: 2;
   margin: 0 auto;
 }
 
@@ -49,6 +66,36 @@ body {
   border-left: 10px solid #ff8e26;
 }
 
+.d-none {
+  display: none;
+}
+
+.leftButton {
+  right: 0;
+}
+
+.rightButton {
+  left: 92px;
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .btn {
+    position: absolute;
+    background: rgba(171, 171, 171, 0.5);
+    padding: 8px 5px 10px 5px;
+    color: #fff;
+    cursor: pointer;
+    top: 50%;
+    z-index: 5;
+  }
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -76,6 +123,102 @@ table tbody tr .firsTd {
 
 table tbody tr .seconTd {
   position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  table tbody tr div {
+    width: 100%;
+  }
+  table tbody tr .dateIntervalTop {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  table tbody tr .cell1 {
+    width: calc(calc(100vw - 92px));
+  }
+  table tbody tr .cell2 {
+    width: calc(calc(100vw - 92px) / 2);
+  }
+  table tbody tr .cell3 {
+    width: calc(calc(100vw - 92px) / 3);
+  }
+  table tbody tr .cell4 {
+    width: calc(calc(100vw - 92px) / 4);
+  }
+  table tbody tr .cellQty1 .slide1 {
+    left: calc((calc(calc(100vw - 92px))) * -1) !important;
+  }
+  table tbody tr .cellQty1 .slide2 {
+    left: calc((calc(calc(100vw - 92px))) * -2) !important;
+  }
+  table tbody tr .cellQty1 .slide3 {
+    left: calc((calc(calc(100vw - 92px))) * -3) !important;
+  }
+  table tbody tr .cellQty1 .slide4 {
+    left: calc((calc(calc(100vw - 92px))) * -4) !important;
+  }
+  table tbody tr .cellQty1 .slide5 {
+    left: calc((calc(calc(100vw - 92px))) * -5) !important;
+  }
+  table tbody tr .cellQty1 .slide6 {
+    left: calc((calc(calc(100vw - 92px))) * -6) !important;
+  }
+  table tbody tr .cellQty2 .slide1 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -1) !important;
+  }
+  table tbody tr .cellQty2 .slide2 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -2) !important;
+  }
+  table tbody tr .cellQty2 .slide3 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -3) !important;
+  }
+  table tbody tr .cellQty2 .slide4 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -4) !important;
+  }
+  table tbody tr .cellQty2 .slide5 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -5) !important;
+  }
+  table tbody tr .cellQty2 .slide6 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -5) !important;
+  }
+  table tbody tr .cellQty3 .slide1 {
+    left: calc((calc(calc(100vw - 92px) / 3)) * -1) !important;
+  }
+  table tbody tr .cellQty3 .slide2 {
+    left: calc((calc(calc(100vw - 92px) / 3)) * -2) !important;
+  }
+  table tbody tr .cellQty3 .slide3 {
+    left: calc((calc(calc(100vw - 92px) / 3)) * -3) !important;
+  }
+  table tbody tr .cellQty3 .slide4 {
+    left: calc((calc(calc(100vw - 92px) / 3)) * -4) !important;
+  }
+  table tbody tr .cellQty3 .slide5 {
+    left: calc(0px - calc(calc(100vw - 92px) / 3) * 4) !important;
+  }
+  table tbody tr .cellQty3 .slide6 {
+    left: calc(0px - calc(calc(100vw - 92px) / 3) * 4) !important;
+  }
+  table tbody tr .cellQty4 .slide1 {
+    left: calc((calc(calc(100vw - 92px) / 4)) * -1) !important;
+  }
+  table tbody tr .cellQty4 .slide2 {
+    left: calc((calc(calc(100vw - 92px) / 4)) * -2) !important;
+  }
+  table tbody tr .cellQty4 .slide3 {
+    left: calc((calc(calc(100vw - 92px) / 4)) * -3) !important;
+  }
+  table tbody tr .cellQty4 .slide4 {
+    left: calc((calc(calc(100vw - 92px) / 4)) * -3) !important;
+  }
+  table tbody tr .cellQty4 .slide5 {
+    left: calc(0px - calc(calc(100vw - 92px) / 4) * 3) !important;
+  }
+  table tbody tr .cellQty4 .slide6 {
+    left: calc(0px - calc(calc(100vw - 92px) / 4) * 3) !important;
+  }
 }
 
 table tbody tr td {
@@ -111,36 +254,6 @@ table tbody tr td .dateIntervalLeft div {
           justify-content: center;
 }
 
-@media screen and (min-width: 768px) {
-  table tbody tr td div {
-    width: 100%;
-  }
-  table tbody tr td .dateIntervalTop {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  table tbody tr td .slide0 {
-    left: 0;
-  }
-  table tbody tr td .slide0 .cellDefault {
-    width: calc(calc(100vw - 92px) / 3);
-  }
-  table tbody tr td .cell2 {
-    width: calc(calc(100vw - 92px) / 2) !important;
-  }
-  table tbody tr td .cell3 {
-    width: calc(calc(100vw - 92px) / 3) !important;
-  }
-  table tbody tr td .cell4 {
-    width: calc(calc(100vw - 92px) / 4) !important;
-  }
-  table tbody tr td .slide3 {
-    left: calc( (calc(calc(100vw - 92px) / 3)) * -2 + calc(1px * -2)) !important;
-  }
-}
-
 table tbody tr td .backDateContainer {
   height: 100%;
   display: -webkit-box;
@@ -166,8 +279,7 @@ table tbody tr td .backDateContainer {
     position: absolute;
     top: 0;
     left: 0;
-    -webkit-transition: 0.7s;
-    transition: 0.7s;
+    right: auto;
   }
 }
 
@@ -187,6 +299,8 @@ table tbody tr td .backDateContainer .dateIntervalTop {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 table tbody tr td .categoryContainer {
@@ -245,8 +359,7 @@ table tbody tr td .priceContainer {
     position: absolute;
     top: 0;
     left: 0;
-    -webkit-transition: 0.7s;
-    transition: 0.7s;
+    right: auto;
   }
 }
 
@@ -276,6 +389,8 @@ table tbody tr td .priceContainer div {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 0.9rem;
   cursor: pointer;
 }

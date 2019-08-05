@@ -9,9 +9,9 @@ class Mainpage extends React.Component {
       // M版時每次點擊往前往後移動幾格儲存格
       slide: 1, // [number]
       // M版時一個畫面show幾格儲存格
-      show: 3, // [number]
-      // 設定花多久時間移動完成
-      speed: 0.3, // [number]
+      show: 3, // [number](1~4)
+      // 設定花多久時間移動完成(0.3 0.6 1.0)
+      speed: 1, // [number]
     }
   }
 
@@ -65,22 +65,50 @@ class Mainpage extends React.Component {
     const priceContainer = document.querySelectorAll('.priceContainer')
     const leftButton = document.querySelector('.leftButton')
     const rightButton = document.querySelector('.rightButton')
-    const currentslide = Number(priceContainer[0].classList[1].split('').pop())
-    console.log(currentslide)
+    let currentslide = Number(priceContainer[0].classList[2].split('').pop())
+    const nowshow = this.state.show
+    const slideQty = this.state.slide
+    let maxSlide = 5
+
+    switch (nowshow) {
+      case 1:
+        maxSlide = 6
+        break
+      case 3:
+        maxSlide = 4
+        break
+      case 4:
+        maxSlide = 3
+        break
+      default:
+        maxSlide = 5
+    }
+
     if (currentslide < 7 - this.state.show) {
       function controlAllEle(e) {
         for (let i = 0; i < e.length; i++) {
           // // 在觸發變色前先將所有上一狀態的顏色清除Y
           // console.log(e[i].classList)
           e[i].classList.remove('slide' + currentslide)
-          e[i].classList.add('slide' + (1 + currentslide))
+          e[i].classList.add(
+            'slide' +
+              // 如果超過滑動上限則固定在最大滑動限度slide
+              (slideQty + currentslide >= (nowshow === 4 ? 3 : 6)
+                ? maxSlide
+                : slideQty + currentslide)
+            // (slideQty + currentslide)
+          )
         }
       }
       controlAllEle(priceContainer)
       controlAllEle(backDateContainer)
     }
-    if (currentslide >= 6 - this.state.show) {
+    console.log(slideQty + currentslide)
+    if (slideQty + currentslide >= maxSlide) {
       leftButton.classList.add('d-none')
+      if (nowshow + slideQty > 6) {
+        rightButton.classList.remove('d-none')
+      }
     } else {
       rightButton.classList.remove('d-none')
     }
@@ -90,22 +118,32 @@ class Mainpage extends React.Component {
     const priceContainer = document.querySelectorAll('.priceContainer')
     const rightButton = document.querySelector('.rightButton')
     const leftButton = document.querySelector('.leftButton')
-    const currentslide = Number(priceContainer[0].classList[1].split('').pop())
-    console.log(currentslide)
+    const currentslide = Number(priceContainer[0].classList[2].split('').pop())
+    const nowshow = this.state.show
+    const slideQty = this.state.slide
+    console.log(currentslide - slideQty)
     if (currentslide > 0) {
       function controlAllEle(e) {
         for (let i = 0; i < e.length; i++) {
           // // 在觸發變色前先將所有上一狀態的顏色清除Y
           // console.log(e[i].classList)
-          e[i].classList.add('slide' + (currentslide - 1))
+          e[i].classList.add(
+            'slide' +
+              // 如果低於最小滑動上限則卡在小限度slide0
+              (currentslide - slideQty < 0 ? 0 : currentslide - slideQty)
+            // (currentslide - slideQty)
+          )
           e[i].classList.remove('slide' + currentslide)
         }
       }
       controlAllEle(priceContainer)
       controlAllEle(backDateContainer)
     }
-    if (currentslide === 1) {
+    if (currentslide - slideQty <= 0) {
       rightButton.classList.add('d-none')
+      if (nowshow + slideQty > 6) {
+        leftButton.classList.remove('d-none')
+      }
     } else {
       leftButton.classList.remove('d-none')
     }
@@ -118,7 +156,10 @@ class Mainpage extends React.Component {
           <div className="btn leftButton " onClick={this.handleSlideLeft}>
             <span>&gt;</span>
           </div>
-          <div className="btn rightButton " onClick={this.handleSlideRight}>
+          <div
+            className="btn rightButton d-none"
+            onClick={this.handleSlideRight}
+          >
             <span>&lt;</span>
           </div>
           <table>
@@ -133,8 +174,15 @@ class Mainpage extends React.Component {
                   </div>
                 </td>
 
-                <td className="seconTd">
-                  <div className="backDateContainer slide0">
+                <td className={'seconTd cellQty' + this.state.show}>
+                  <div
+                    className={
+                      'backDateContainer' +
+                      ' transition-' +
+                      this.state.speed.toString().replace('.', '') +
+                      ' slide0'
+                    }
+                  >
                     {this.state.Info.map((ele, index) => (
                       <div
                         className={'dateIntervalTop cell' + this.state.show}
@@ -156,8 +204,15 @@ class Mainpage extends React.Component {
                       </div>
                     </div>
                   </td>
-                  <td className="seconTd">
-                    <div className="priceContainer  slide0">
+                  <td className={'seconTd cellQty' + this.state.show}>
+                    <div
+                      className={
+                        'priceContainer' +
+                        ' transition-' +
+                        this.state.speed.toString().replace('.', '') +
+                        ' slide0'
+                      }
+                    >
                       {ele.detail.map((e, index) => (
                         <div
                           className={

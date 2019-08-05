@@ -40,24 +40,33 @@ $slidesLeft1: -1;
 $slidesLeft2: -2;
 $slidesLeft3: -3;
 $slidesLeft4: -4;
-// $border1: calc(1px * #{$slidesLeft1});
-// $border2: calc(1px * #{$slidesLeft2});
-// $border3: calc(1px * #{$slidesLeft3});
-// $border4: calc(1px * #{$slidesLeft4});
+$slidesLeft5: -5;
+$slidesLeft6: -6;
 
-// $table-mobole-col2Left1: calc(((0px - #{$showWitdh}) / 2) - #{$border});
-// $table-mobole-col2Left2: calc(
-//   (((#{$showWitdh}) / 2) - #{$border}) * #{$slides}
-// );
-// $table-mobole-col3Left1: calc(((0px - #{$showWitdh}) / 3) - #{$border});
+$table-mobole-col1Left1: calc((#{$table-mobole-cell1Width}) * #{$slidesLeft1});
+$table-mobole-col1Left2: calc((#{$table-mobole-cell1Width}) * #{$slidesLeft2});
+$table-mobole-col1Left3: calc((#{$table-mobole-cell1Width}) * #{$slidesLeft3});
+$table-mobole-col1Left4: calc((#{$table-mobole-cell1Width}) * #{$slidesLeft4});
+$table-mobole-col1Left5: calc((#{$table-mobole-cell1Width}) * #{$slidesLeft5});
+$table-mobole-col1Left6: calc((#{$table-mobole-cell1Width}) * #{$slidesLeft6});
+
+$table-mobole-col2Left1: calc((#{$table-mobole-cell2Width}) * #{$slidesLeft1});
+$table-mobole-col2Left2: calc((#{$table-mobole-cell2Width}) * #{$slidesLeft2});
+$table-mobole-col2Left3: calc((#{$table-mobole-cell2Width}) * #{$slidesLeft3});
+$table-mobole-col2Left4: calc((#{$table-mobole-cell2Width}) * #{$slidesLeft4});
+$table-mobole-col2Left5: calc((#{$table-mobole-cell2Width}) * #{$slidesLeft5});
+$table-mobole-col2Left6: calc((#{$table-mobole-cell2Width}) * #{$slidesLeft6});
+
 $table-mobole-col3Left1: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft1});
 $table-mobole-col3Left2: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft2});
 $table-mobole-col3Left3: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft3});
 $table-mobole-col3Left4: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft4});
-// $table-mobole-col4Left1: calc(((0px - #{$showWitdh}) / 4) - #{$border});
-// $table-mobole-col4Left2: calc(
-//   (((#{$showWitdh}) / 4) - #{$border}) * #{$slides}
-// );
+$table-mobole-col3Left5: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft5});
+
+$table-mobole-col4Left1: calc((#{$table-mobole-cell4Width}) * #{$slidesLeft1});
+$table-mobole-col4Left2: calc((#{$table-mobole-cell4Width}) * #{$slidesLeft2});
+$table-mobole-col4Left3: calc((#{$table-mobole-cell4Width}) * #{$slidesLeft3});
+$table-mobole-col4Left4: calc((#{$table-mobole-cell4Width}) * #{$slidesLeft4});
 
 @mixin ContainerSize {
   @media screen and (min-width: $screen-tablet) {
@@ -67,7 +76,8 @@ $table-mobole-col3Left4: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft4});
     position: absolute;
     top: 0;
     left: 0;
-    transition: 0.3s;
+    right: auto;
+    // transition: 0.3s;
   }
 }
 // 欄寬度控制
@@ -81,10 +91,6 @@ $table-mobole-col3Left4: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft4});
     }
   }
   @media screen and (max-width: $screen-phone-max) {
-    // 減掉左側表頭寬度
-    // .slide0 {
-    //   left: 0;
-    // }
     .cell1 {
       width: $table-mobole-cell1Width;
     }
@@ -97,27 +103,97 @@ $table-mobole-col3Left4: calc((#{$table-mobole-cell3Width}) * #{$slidesLeft4});
     .cell4 {
       width: $table-mobole-cell4Width;
     }
-    // .slide2 {
-    //   left: $table-mobole-col2Left1 !important;
-    // }
-    .slide1 {
-      left: $table-mobole-col3Left1 !important;
+    .cellQty1 {
+      .slide1 {
+        left: $table-mobole-col1Left1 !important;
+      }
+      .slide2 {
+        left: $table-mobole-col1Left2 !important;
+      }
+      .slide3 {
+        left: $table-mobole-col1Left3 !important;
+      }
+      .slide4 {
+        left: $table-mobole-col1Left4 !important;
+      }
+      .slide5 {
+        left: $table-mobole-col1Left5 !important;
+      }
+      .slide6 {
+        left: $table-mobole-col1Left6 !important;
+      }
     }
-    .slide2 {
-      left: $table-mobole-col3Left2 !important;
+    .cellQty2 {
+      .slide1 {
+        left: $table-mobole-col2Left1 !important;
+      }
+      .slide2 {
+        left: $table-mobole-col2Left2 !important;
+      }
+      .slide3 {
+        left: $table-mobole-col2Left3 !important;
+      }
+      .slide4 {
+        left: $table-mobole-col2Left4 !important;
+      }
+      .slide5 {
+        left: $table-mobole-col2Left5 !important;
+      }
+      .slide6 {
+        left: $table-mobole-col2Left5 !important;
+      }
     }
-    .slide3 {
-      left: $table-mobole-col3Left3 !important;
+    .cellQty3 {
+      .slide1 {
+        left: $table-mobole-col3Left1 !important;
+      }
+      .slide2 {
+        left: $table-mobole-col3Left2 !important;
+      }
+      .slide3 {
+        left: $table-mobole-col3Left3 !important;
+      }
+      .slide4 {
+        left: $table-mobole-col3Left4 !important;
+      }
+      .slide5 {
+        left: calc(0px - #{$table-mobole-cell3Width} * 4) !important;
+      }
+      .slide6 {
+        left: calc(0px - #{$table-mobole-cell3Width} * 4) !important;
+      }
     }
-    .slide4 {
-      left: $table-mobole-col3Left4 !important;
+    .cellQty4 {
+      .slide1 {
+        left: $table-mobole-col4Left1 !important;
+      }
+      .slide2 {
+        left: $table-mobole-col4Left2 !important;
+      }
+      .slide3 {
+        left: $table-mobole-col4Left3 !important;
+      }
+      .slide4 {
+        left: $table-mobole-col4Left3 !important;
+      }
+      .slide5 {
+        left: calc(0px - #{$table-mobole-cell4Width} * 3) !important;
+      }
+      .slide6 {
+        left: calc(0px - #{$table-mobole-cell4Width} * 3) !important;
+      }
     }
-    // .slide4 {
-    //   left: $table-mobole-col4Left !important;
-    // }
   }
 }
-
+.transition-03 {
+  transition: 0.3s;
+}
+.transition-06 {
+  transition: 0.6s;
+}
+.transition-1 {
+  transition: 1s;
+}
 body {
   background: #f4f4f4;
 }
@@ -234,10 +310,7 @@ table {
             justify-content: center;
           }
         }
-        // .slideLeft {
-        //   left: $table-mobole-slideLeft !important;
-        //   // transition: 0.5s;
-        // }
+
         // 上側表頭區
 
         .backDateContainer {
