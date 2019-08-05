@@ -92,6 +92,27 @@ $table-mobole-col4Left4: calc((#{$table-mobole-cell4Width}) * #{$slidesLeft4});
     }
   }
   @media screen and (max-width: $screen-phone-max) {
+    // console.log('先在css寫trans property，在左右按鈕onclick時再加入duration ')
+    // 並在transitionEnd滑動完後馬上移除duration，
+    // 如此因為原本left受改變格子寬度所重新觸發的trasition一般情況下不會作用，有點左右按鈕才會觸發
+    .transition-03 {
+      transition-property: left;
+    }
+    .trans-03 {
+      transition-duration: 0.3s;
+    }
+    .transition-06 {
+      transition-property: left;
+    }
+    .trans-06 {
+      transition-duration: 0.6s;
+    }
+    .transition-1 {
+      transition-property: left;
+    }
+    .trans-1 {
+      transition-duration: 1s;
+    }
     .cell1 {
       width: $table-mobole-cell1Width;
     }
@@ -186,15 +207,7 @@ $table-mobole-col4Left4: calc((#{$table-mobole-cell4Width}) * #{$slidesLeft4});
     }
   }
 }
-.transition-03 {
-  transition: 0.3s;
-}
-.transition-06 {
-  transition: 0.6s;
-}
-.transition-1 {
-  transition: 1s;
-}
+
 .newYearTop :before {
   content: '2019';
   display: block;

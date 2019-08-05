@@ -66,6 +66,7 @@ class Mainpage extends React.Component {
     const leftButton = document.querySelector('.leftButton')
     const rightButton = document.querySelector('.rightButton')
     let currentslide = Number(priceContainer[0].classList[2].split('').pop())
+    const Speed = this.state.speed.toString().replace('.', '')
     const nowshow = this.state.show
     const slideQty = this.state.slide
     let maxSlide = 5
@@ -95,8 +96,15 @@ class Mainpage extends React.Component {
               // 如果超過滑動上限則固定在最大滑動限度slide
               (slideQty + currentslide >= (nowshow === 4 ? 3 : 6)
                 ? maxSlide
-                : slideQty + currentslide)
+                : slideQty + currentslide),
+            'trans-' + Speed
           )
+          e[i].addEventListener('transitionend', function() {
+            // console.log('先在css寫trans property，在左右按鈕onclick時再加入duration ')
+            // 並在transitionEnd滑動完後馬上移除duration，
+            // 如此因為原本left受改變格子寬度所重新觸發的trasition一般情況不會作用，有點左右按鈕才會觸發
+            this.classList.remove('trans-' + Speed)
+          })
         }
       }
       controlAllEle(priceContainer)
@@ -118,6 +126,7 @@ class Mainpage extends React.Component {
     const rightButton = document.querySelector('.rightButton')
     const leftButton = document.querySelector('.leftButton')
     const currentslide = Number(priceContainer[0].classList[2].split('').pop())
+    const Speed = this.state.speed.toString().replace('.', '')
     const nowshow = this.state.show
     const slideQty = this.state.slide
     console.log(currentslide - slideQty)
@@ -129,9 +138,14 @@ class Mainpage extends React.Component {
           e[i].classList.add(
             'slide' +
               // 如果低於最小滑動上限則卡在小限度slide0
-              (currentslide - slideQty < 0 ? 0 : currentslide - slideQty)
+              (currentslide - slideQty < 0 ? 0 : currentslide - slideQty),
+            'trans-' + Speed
           )
           e[i].classList.remove('slide' + currentslide)
+          e[i].addEventListener('transitionend', function() {
+            // console.log('gg2')
+            this.classList.remove('trans-' + Speed)
+          })
         }
       }
       controlAllEle(priceContainer)

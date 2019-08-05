@@ -1,19 +1,4 @@
 @charset "UTF-8";
-.transition-03 {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.transition-06 {
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
-}
-
-.transition-1 {
-  -webkit-transition: 1s;
-  transition: 1s;
-}
-
 .newYearTop :before {
   content: '2019';
   display: block;
@@ -62,6 +47,10 @@ body {
   .wrapper {
     margin: 0;
   }
+}
+
+.d-none {
+  display: none;
 }
 
 .cheapest {
@@ -157,6 +146,30 @@ table tbody tr .seconTd {
 }
 
 @media screen and (max-width: 767px) {
+  table tbody tr .transition-03 {
+    -webkit-transition-property: left;
+    transition-property: left;
+  }
+  table tbody tr .trans-03 {
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+  }
+  table tbody tr .transition-06 {
+    -webkit-transition-property: left;
+    transition-property: left;
+  }
+  table tbody tr .trans-06 {
+    -webkit-transition-duration: 0.6s;
+            transition-duration: 0.6s;
+  }
+  table tbody tr .transition-1 {
+    -webkit-transition-property: left;
+    transition-property: left;
+  }
+  table tbody tr .trans-1 {
+    -webkit-transition-duration: 1s;
+            transition-duration: 1s;
+  }
   table tbody tr .cell1 {
     width: calc(calc(100vw - 92px));
   }
