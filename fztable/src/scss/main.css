@@ -1,27 +1,67 @@
 @charset "UTF-8";
+.transition-03 {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.transition-06 {
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.transition-1 {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.newYearTop :before {
+  content: '2019';
+  display: block;
+  font-size: 12px;
+  color: #24a07c;
+  text-align: right;
+}
+
+.newYearLeft :before {
+  content: '2019';
+  display: block;
+  font-size: 12px;
+  color: #24a07c;
+  text-align: right;
+}
+
+@media screen and (min-width: 768px) {
+  .newYearLeft :before {
+    width: 84%;
+  }
+}
+
 body {
   background: #f4f4f4;
 }
 
 .wrapper {
-  width: 890px;
+  position: relative;
+  z-index: 2;
   margin: 0 auto;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 980px) {
   .wrapper {
-    width: 710px;
+    width: 980px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 979px) {
+  .wrapper {
+    width: 768px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .wrapper {
-    width: 300px;
+    margin: 0;
   }
-}
-
-.d-none {
-  display: none;
 }
 
 .cheapest {
@@ -48,6 +88,36 @@ body {
   border-left: 10px solid #ff8e26;
 }
 
+.d-none {
+  display: none;
+}
+
+.leftButton {
+  right: 0;
+}
+
+.rightButton {
+  left: 92px;
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .btn {
+    position: absolute;
+    background: rgba(171, 171, 171, 0.5);
+    padding: 8px 5px 10px 5px;
+    color: #fff;
+    cursor: pointer;
+    top: 50%;
+    z-index: 5;
+  }
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -60,91 +130,278 @@ table {
 }
 
 table tbody {
-  border-top: 1px solid #e1e2e4;
-  border-right: 1px solid #e1e2e4;
+  width: 100%;
+  border-bottom: 1px solid #e1e2e4;
 }
 
 table tbody tr {
   width: 100%;
 }
 
-table tbody tr .dateIntervalLeft {
+table tbody tr .firsTd {
+  width: 90px;
+  height: 50px;
+}
+
+table tbody tr .seconTd {
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  table tbody tr div {
+    width: 100%;
+  }
+  table tbody tr .dateIntervalTop {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  table tbody tr .cell1 {
+    width: calc(calc(100vw - 92px));
+  }
+  table tbody tr .cell2 {
+    width: calc(calc(100vw - 92px) / 2);
+  }
+  table tbody tr .cell3 {
+    width: calc(calc(100vw - 92px) / 3);
+  }
+  table tbody tr .cell4 {
+    width: calc(calc(100vw - 92px) / 4);
+  }
+  table tbody tr .cellQty1 .slide1 {
+    left: calc((calc(calc(100vw - 92px))) * -1) !important;
+  }
+  table tbody tr .cellQty1 .slide2 {
+    left: calc((calc(calc(100vw - 92px))) * -2) !important;
+  }
+  table tbody tr .cellQty1 .slide3 {
+    left: calc((calc(calc(100vw - 92px))) * -3) !important;
+  }
+  table tbody tr .cellQty1 .slide4 {
+    left: calc((calc(calc(100vw - 92px))) * -4) !important;
+  }
+  table tbody tr .cellQty1 .slide5 {
+    left: calc((calc(calc(100vw - 92px))) * -5) !important;
+  }
+  table tbody tr .cellQty1 .slide6 {
+    left: calc((calc(calc(100vw - 92px))) * -6) !important;
+  }
+  table tbody tr .cellQty2 .slide1 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -1) !important;
+  }
+  table tbody tr .cellQty2 .slide2 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -2) !important;
+  }
+  table tbody tr .cellQty2 .slide3 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -3) !important;
+  }
+  table tbody tr .cellQty2 .slide4 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -4) !important;
+  }
+  table tbody tr .cellQty2 .slide5 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -5) !important;
+  }
+  table tbody tr .cellQty2 .slide6 {
+    left: calc((calc(calc(100vw - 92px) / 2)) * -5) !important;
+  }
+  table tbody tr .cellQty3 .slide1 {
+    left: calc((calc(calc(100vw - 92px) / 3)) * -1) !important;
+  }
+  table tbody tr .cellQty3 .slide2 {
+    left: calc((calc(calc(100vw - 92px) / 3)) * -2) !important;
+  }
+  table tbody tr .cellQty3 .slide3 {
+    left: calc((calc(calc(100vw - 92px) / 3)) * -3) !important;
+  }
+  table tbody tr .cellQty3 .slide4 {
+    left: calc((calc(calc(100vw - 92px) / 3)) * -4) !important;
+  }
+  table tbody tr .cellQty3 .slide5 {
+    left: calc(0px - calc(calc(100vw - 92px) / 3) * 4) !important;
+  }
+  table tbody tr .cellQty3 .slide6 {
+    left: calc(0px - calc(calc(100vw - 92px) / 3) * 4) !important;
+  }
+  table tbody tr .cellQty4 .slide1 {
+    left: calc((calc(calc(100vw - 92px) / 4)) * -1) !important;
+  }
+  table tbody tr .cellQty4 .slide2 {
+    left: calc((calc(calc(100vw - 92px) / 4)) * -2) !important;
+  }
+  table tbody tr .cellQty4 .slide3 {
+    left: calc((calc(calc(100vw - 92px) / 4)) * -3) !important;
+  }
+  table tbody tr .cellQty4 .slide4 {
+    left: calc((calc(calc(100vw - 92px) / 4)) * -3) !important;
+  }
+  table tbody tr .cellQty4 .slide5 {
+    left: calc(0px - calc(calc(100vw - 92px) / 4) * 3) !important;
+  }
+  table tbody tr .cellQty4 .slide6 {
+    left: calc(0px - calc(calc(100vw - 92px) / 4) * 3) !important;
+  }
+}
+
+table tbody tr td {
+  height: 50px;
+  padding: 0;
+  overflow: hidden;
+}
+
+table tbody tr td .dateIntervalLeft {
+  width: 90px;
+  height: 100%;
   font-size: 0.9rem;
   color: #666;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-left: 1px solid #e1e2e4;
+  border-top: 1px solid #e1e2e4;
+  border-right: 1px solid #e1e2e4;
   background: #f1f1f1;
 }
 
-table tbody tr .dateIntervalLeft div {
+table tbody tr td .dateIntervalLeft div {
   cursor: default;
-  background: #f1f1f1;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-table tbody tr .dateIntervalTop {
-  font-size: 0.9rem;
-  color: #666;
+table tbody tr td .backDateContainer {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: #eaedf2;
-  cursor: default;
 }
 
-table tbody tr .category {
+@media screen and (min-width: 768px) {
+  table tbody tr td .backDateContainer {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  table tbody tr td .backDateContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+  }
+}
+
+table tbody tr td .backDateContainer .dateIntervalTop {
+  border-right: 1px solid #e1e2e4;
+  border-top: 1px solid #e1e2e4;
+  height: 100%;
+  font-size: 0.9rem;
+  color: #666;
+  cursor: default;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+table tbody tr td .categoryContainer {
+  width: 90px;
+  height: 100%;
+  border-top: 1px solid #e1e2e4;
+  border-left: 1px solid #e1e2e4;
+  border-right: 1px solid #e1e2e4;
+}
+
+table tbody tr td .categoryContainer .category {
+  width: 100%;
+  height: 100%;
   background: #eaedf2;
   cursor: default;
   display: block;
-  padding: 3px;
+  padding: 4px 0;
 }
 
-table tbody tr .category :first-child {
+table tbody tr td .categoryContainer .category :first-child {
   text-align: right;
 }
 
-table tbody tr .category :last-child {
+table tbody tr td .categoryContainer .category :last-child {
   text-align: left;
 }
 
-table tbody tr .category span {
+table tbody tr td .categoryContainer .category span {
   margin: 0 3px;
   display: block;
   color: #666;
   font-size: 0.9rem;
 }
 
-table tbody tr td {
-  padding: 0;
-}
-
-table tbody tr td div {
-  width: 100%;
+table tbody tr td .priceContainer {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background: #fff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
-table tbody tr td div .alignInicator {
+@media screen and (min-width: 768px) {
+  table tbody tr td .priceContainer {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  table tbody tr td .priceContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+  }
+}
+
+table tbody tr td .priceContainer .alignInicator {
   background: #f7f7f7;
 }
 
-table tbody tr td div .active {
+table tbody tr td .priceContainer .active {
   background: #fff9e3;
   border: 1px solid #fe8b88;
 }
 
-table tbody tr td div .hover {
+table tbody tr td .priceContainer .hover {
   background: #fff9e3;
   border: 1px solid #fe8b88;
 }
 
-table tbody tr td div div {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  border-left: 1px solid #e1e2e4;
-  border-bottom: 1px solid #e1e2e4;
+table tbody tr td .priceContainer div {
+  border-right: 1px solid #e1e2e4;
+  border-top: 1px solid #e1e2e4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -154,12 +411,17 @@ table tbody tr td div div {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 0.9rem;
   cursor: pointer;
 }
 
-table tbody tr td div div span {
+table tbody tr td .priceContainer div :first-child {
+  color: black;
+}
+
+table tbody tr td .priceContainer div span {
   margin: 0 0 0 5px;
   color: #999;
   background: transparent;
