@@ -43,6 +43,7 @@ $slidesLeft4: -4;
 $slidesLeft5: -5;
 $slidesLeft6: -6;
 
+// 計算各格數滑動單格長度
 $table-mobole-col1Left1: calc((#{$table-mobole-cell1Width}) * #{$slidesLeft1});
 $table-mobole-col1Left2: calc((#{$table-mobole-cell1Width}) * #{$slidesLeft2});
 $table-mobole-col1Left3: calc((#{$table-mobole-cell1Width}) * #{$slidesLeft3});
@@ -194,13 +195,30 @@ $table-mobole-col4Left4: calc((#{$table-mobole-cell4Width}) * #{$slidesLeft4});
 .transition-1 {
   transition: 1s;
 }
+.newYearTop :before {
+  content: '2019';
+  display: block;
+  font-size: 12px;
+  color: #24a07c;
+  text-align: right;
+}
+.newYearLeft :before {
+  content: '2019';
+  display: block;
+  font-size: 12px;
+  color: #24a07c;
+  text-align: right;
+  @media screen and (min-width: $screen-tablet) {
+    width: 84%;
+  }
+}
+
 body {
   background: #f4f4f4;
 }
 .wrapper {
   position: relative;
   z-index: 2;
-  // width: $screen-lg-desktop-wrapper;
   margin: 0 auto;
   @media screen and (min-width: $screen-desktop) {
     width: $screen-desktop;
@@ -209,7 +227,6 @@ body {
     width: $screen-tablet;
   }
   @media screen and (max-width: $screen-phone-max) {
-    // width: $screen-phone;
     margin: 0;
   }
 }

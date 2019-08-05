@@ -7,7 +7,7 @@ class Mainpage extends React.Component {
     this.state = {
       Info: [],
       // M版時每次點擊往前往後移動幾格儲存格
-      slide: 1, // [number]
+      slide: 2, // [number]
       // M版時一個畫面show幾格儲存格
       show: 3, // [number](1~4)
       // 設定花多久時間移動完成(0.3 0.6 1.0)
@@ -96,7 +96,6 @@ class Mainpage extends React.Component {
               (slideQty + currentslide >= (nowshow === 4 ? 3 : 6)
                 ? maxSlide
                 : slideQty + currentslide)
-            // (slideQty + currentslide)
           )
         }
       }
@@ -131,7 +130,6 @@ class Mainpage extends React.Component {
             'slide' +
               // 如果低於最小滑動上限則卡在小限度slide0
               (currentslide - slideQty < 0 ? 0 : currentslide - slideQty)
-            // (currentslide - slideQty)
           )
           e[i].classList.remove('slide' + currentslide)
         }
@@ -185,10 +183,17 @@ class Mainpage extends React.Component {
                   >
                     {this.state.Info.map((ele, index) => (
                       <div
-                        className={'dateIntervalTop cell' + this.state.show}
+                        className={
+                          'dateIntervalTop' +
+                          (ele.goDate.indexOf('01/01') !== -1
+                            ? ' newYearTop'
+                            : ' ') +
+                          ' cell' +
+                          this.state.show
+                        }
                         key={index + +new Date()}
                       >
-                        <span>{ele.goDate}</span>
+                        <span className="">{ele.goDate}</span>
                       </div>
                     ))}
                   </div>
@@ -196,10 +201,15 @@ class Mainpage extends React.Component {
               </tr>
               {this.state.Info.map((ele, index) => (
                 <tr key={index + +new Date()}>
-                  {/* 一定要用TD包ele不可單純用寫在這裡 */}
                   <td className="firsTd">
                     <div className="dateIntervalLeft">
-                      <div>
+                      <div
+                        className={
+                          ele.goDate.indexOf('01/01') !== -1
+                            ? ' newYearLeft'
+                            : ' '
+                        }
+                      >
                         <span>{ele.goDate}</span>
                       </div>
                     </div>
